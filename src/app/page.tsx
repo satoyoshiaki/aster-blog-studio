@@ -1,99 +1,103 @@
 import Link from "next/link";
 
-import { ProductGrid } from "@/components/product-grid";
-import { SectionHeading } from "@/components/section-heading";
-import { Button } from "@/components/ui/button";
+import { SubmitForm } from "@/components/night-bottle/submit-form";
 import { Card, CardContent } from "@/components/ui/card";
-import { getCategories, getFeaturedProducts } from "@/lib/data";
+import { buildHomepageData } from "@/lib/service";
+import { formatDate, safeArray } from "@/lib/utils";
 
 export default async function HomePage() {
-  const [featuredProducts, categories] = await Promise.all([
-    getFeaturedProducts(),
-    getCategories(),
-  ]);
+  const { domains, history } = await buildHomepageData();
 
   return (
-    <div className="bg-white">
-      <section className="mx-auto max-w-7xl px-6 py-20 sm:py-28">
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
-          <div className="space-y-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">
-              Digital Goods Marketplace
-            </p>
-            <div className="space-y-5">
-              <h1 className="max-w-4xl text-5xl leading-tight sm:text-6xl">
-                つくる人の世界観ごと届ける、BOOTHライクなデジタルマーケット。
-              </h1>
-              <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
-                イラスト素材、3Dアセット、テンプレート、音源まで。作品の熱量が伝わる
-                クリーンな購入体験を、買い手にも売り手にも。
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-4">
-              <Button asChild size="lg">
-                <Link href="/products">作品を探す</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link href="/seller/dashboard">出品を始める</Link>
-              </Button>
-            </div>
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 py-10 sm:px-6">
+      <section className="grid gap-8 lg:grid-cols-[1.1fr,0.9fr]">
+        <div className="space-y-6">
+          <div className="inline-flex rounded-full border border-violet-400/30 bg-violet-500/10 px-4 py-2 text-xs uppercase tracking-[0.35em] text-violet-200">
+            Anonymous Adult Recs
           </div>
-          <Card className="border-border/60 bg-secondary/40">
-            <CardContent className="space-y-6 p-8">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div>
-                  <p className="text-sm text-muted-foreground">Featured</p>
-                  <p className="text-3xl font-semibold">{featuredProducts.length}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Categories</p>
-                  <p className="text-3xl font-semibold">{categories.length}</p>
-                </div>
-              </div>
-              <p className="text-sm leading-7 text-muted-foreground">
-                ミニマルな導線で、作品の魅力と価格をまっすぐ伝える構成です。ホームから
-                そのままカテゴリ回遊と特集導線につなげます。
-              </p>
-            </CardContent>
-          </Card>
+          <h1 className="max-w-3xl text-5xl leading-none text-white sm:text-6xl">
+            夜のおすすめを、匿名のボトルで回す。
+          </h1>
+          <p className="max-w-2xl text-base leading-8 text-zinc-300 sm:text-lg">
+            投稿は匿名のまま審査待ちとして受け付けられ、承認後に Night Bottle の公開プールへ追加されます。
+          </p>
+          <div className="grid gap-4 sm:grid-cols-3">
+            <Card className="border-white/10 bg-white/5">
+              <CardContent className="p-5">
+                <p className="text-3xl font-semibold text-white">{domains.length}</p>
+                <p className="mt-2 text-sm text-zinc-400">許可済み公式ドメイン</p>
+              </CardContent>
+            </Card>
+            <Card className="border-white/10 bg-white/5">
+              <CardContent className="p-5">
+                <p className="text-3xl font-semibold text-white">{history.length}</p>
+                <p className="mt-2 text-sm text-zinc-400">最近の交換ログ</p>
+              </CardContent>
+            </Card>
+            <Card className="border-white/10 bg-white/5">
+              <CardContent className="p-5">
+                <p className="text-3xl font-semibold text-white">18+</p>
+                <p className="mt-2 text-sm text-zinc-400">年齢確認必須</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        <div className="rounded-[32px] border border-white/10 bg-gradient-to-br from-violet-500/15 via-transparent to-fuchsia-500/10 p-6">
+          <div className="rounded-[28px] border border-white/10 bg-black/60 p-6">
+            <p className="text-sm uppercase tracking-[0.3em] text-zinc-500">Allowed Sources</p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              {domains.map((item) => (
+                <span
+                  key={item.id}
+                  className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-zinc-100"
+                >
+                  {item.domain}
+                </span>
+              ))}
+            </div>
+            <p className="mt-6 text-sm leading-7 text-zinc-300">
+              公式販売・公式配信の URL のみ受け付けます。コメントは任意、タグも任意です。
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl space-y-10 px-6 py-16">
-        <SectionHeading
-          eyebrow="Featured"
-          title="注目のデジタル作品"
-          description="新着の特集掲載作品をピックアップしています。"
-        />
-        {featuredProducts.length > 0 ? (
-          <ProductGrid products={featuredProducts} />
-        ) : (
-          <Card>
-            <CardContent className="p-8 text-sm text-muted-foreground">
-              Featured products are not available yet.
-            </CardContent>
-          </Card>
-        )}
-      </section>
+      <SubmitForm />
 
-      <section className="mx-auto max-w-7xl px-6 py-16">
-        <SectionHeading
-          eyebrow="Categories"
-          title="カテゴリから探す"
-          description="用途や制作ジャンルに合わせて作品を見つけられます。"
-        />
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {categories.map((category) => (
-            <Link key={category.id} href={`/products?category=${category.slug}`}>
-              <Card className="h-full transition-transform duration-200 hover:-translate-y-1">
-                <CardContent className="space-y-3 p-6">
-                  <h3 className="text-2xl font-semibold">{category.name}</h3>
-                  <p className="text-sm leading-7 text-muted-foreground">
-                    {category.description ?? "Curated digital products in this category."}
-                  </p>
-                </CardContent>
-              </Card>
-            </Link>
+      <section className="space-y-5">
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <p className="text-xs uppercase tracking-[0.35em] text-violet-300">Recent Bottles</p>
+            <h2 className="mt-2 text-3xl text-white">最近交換されたおすすめ</h2>
+          </div>
+          <Link className="text-sm text-zinc-300 hover:text-white" href="/history">
+            すべて見る
+          </Link>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {history.map((item) => (
+            <Card key={item.id} className="border-white/10 bg-zinc-950/80">
+              <CardContent className="space-y-3 p-5">
+                <p className="text-sm text-zinc-500">{formatDate(item.created_at)}</p>
+                <p className="text-lg font-semibold text-white">
+                  {item.received?.title ?? "まだ交換相手が見つかっていません"}
+                </p>
+                <p className="line-clamp-3 text-sm text-zinc-300">
+                  {item.received?.description ?? "新規投稿直後など、返却先がまだない場合があります。"}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {safeArray(item.received?.tags).map((tag) => (
+                    <span
+                      key={`${item.id}-${tag}`}
+                      className="rounded-full bg-violet-500/10 px-3 py-1 text-xs text-violet-100"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </section>

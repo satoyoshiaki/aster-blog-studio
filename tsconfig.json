@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": false,
     "skipLibCheck": true,
     "strict": true,
@@ -14,15 +18,57 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
+    "types": [
+      "node",
+      "react",
+      "react-dom"
+    ],
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "react-hook-form": [
+        "./src/vendor/react-hook-form"
+      ],
+      "@hookform/resolvers/zod": [
+        "./src/vendor/hookform-zod"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "prisma/seed.ts"]
+  "include": [
+    "next-env.d.ts",
+    "src/app/**/*.ts",
+    "src/app/**/*.tsx",
+    "src/components/night-bottle/**/*.ts",
+    "src/components/night-bottle/**/*.tsx",
+    "src/components/providers.tsx",
+    "src/components/ui/**/*.ts",
+    "src/components/ui/**/*.tsx",
+    "src/lib/admin-auth.ts",
+    "src/lib/constants.ts",
+    "src/lib/env.ts",
+    "src/lib/metadata.ts",
+    "src/lib/mock-data.ts",
+    "src/lib/repository.ts",
+    "src/lib/security.ts",
+    "src/lib/service.ts",
+    "src/lib/utils.ts",
+    "src/lib/validations.ts",
+    "src/types/**/*.ts",
+    "src/vendor/**/*.ts",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "prisma/seed.ts",
+    "ai-task-dashboard",
+    "everything-claude-code",
+    "us-secular-leaders-trend-bot",
+    "japan-intraday-ls"
+  ]
 }

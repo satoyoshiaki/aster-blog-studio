@@ -30,11 +30,11 @@ const config: Config = {
         display: ["var(--font-display)"]
       },
       boxShadow: {
-        soft: "0 24px 60px rgba(15, 23, 42, 0.08)",
-        card: "0 12px 32px rgba(15, 23, 42, 0.06)"
+        soft: "0 32px 80px rgba(0, 0, 0, 0.35)",
+        card: "0 16px 40px rgba(0, 0, 0, 0.28)"
       },
       backgroundImage: {
-        mesh: "radial-gradient(circle at top left, rgba(253, 230, 138, 0.35), transparent 30%), radial-gradient(circle at top right, rgba(251, 191, 36, 0.18), transparent 28%)"
+        mesh: "radial-gradient(circle at top left, rgba(236, 72, 153, 0.16), transparent 28%), radial-gradient(circle at top right, rgba(168, 85, 247, 0.12), transparent 30%), radial-gradient(circle at bottom, rgba(239, 68, 68, 0.1), transparent 32%)"
       }
     }
   },

@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --background: 36 33% 98%;
-  --foreground: 222 29% 15%;
-  --card: 0 0% 100%;
-  --card-foreground: 222 29% 15%;
-  --border: 30 15% 88%;
-  --input: 30 15% 88%;
-  --ring: 36 100% 44%;
-  --muted: 36 20% 95%;
-  --muted-foreground: 215 16% 40%;
-  --primary: 24 96% 46%;
+  --background: 240 10% 6%;
+  --foreground: 0 0% 98%;
+  --card: 240 10% 9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 6% 18%;
+  --input: 240 6% 18%;
+  --ring: 334 85% 63%;
+  --muted: 240 7% 12%;
+  --muted-foreground: 240 5% 65%;
+  --primary: 334 85% 63%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 36 36% 92%;
-  --secondary-foreground: 222 29% 15%;
-  --accent: 42 100% 96%;
-  --accent-foreground: 24 96% 36%;
+  --secondary: 240 8% 14%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 8% 14%;
+  --accent-foreground: 0 0% 98%;
 }
 
 html {
@@ -33,11 +33,16 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top, rgba(251, 191, 36, 0.12), transparent 28%),
-    linear-gradient(180deg, #fffdf7 0%, #fff 42%, #fcfbf7 100%);
+    radial-gradient(circle at top, rgba(236, 72, 153, 0.16), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.12), transparent 24%),
+    linear-gradient(180deg, #0d0b12 0%, #09080d 48%, #050508 100%);
   color: hsl(var(--foreground));
   font-family: var(--font-sans, system-ui, sans-serif);
   -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(236, 72, 153, 0.24);
 }
 
 a {
@@ -60,5 +65,9 @@ img {
   h3,
   h4 {
     @apply font-display tracking-tight text-foreground;
+  }
+
+  body[data-age-gate="locked"] [data-sensitive="true"] {
+    filter: blur(20px);
   }
 }

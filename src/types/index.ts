@@ -1,66 +1,64 @@
-import type {
-  Category,
-  Download,
-  Order,
-  OrderItem,
-  Product,
-  ProductFile,
-  ProductImage,
-  ProductStatus,
-  SellerProfile,
-  User,
-  UserRole,
-} from "@prisma/client";
+export type SubmissionStatus = "pending" | "approved" | "rejected";
 
-export type SessionUser = {
+export type SubmissionRecord = {
   id: string;
-  email: string;
-  name?: string | null;
-  role: UserRole;
-  sellerProfileId: string | null;
-};
-
-export type ProductWithRelations = Product & {
-  category: Category;
-  seller: SellerProfile & {
-    user: Pick<User, "id" | "email" | "name">;
-  };
-  images: ProductImage[];
-  files: ProductFile[];
-  _count?: {
-    orderItems: number;
-  };
-};
-
-export type OrderWithRelations = Order & {
-  items: Array<
-    OrderItem & {
-      product: Product & {
-        images: ProductImage[];
-      };
-    }
-  >;
-  downloads: Download[];
-};
-
-export type ProductFilters = {
-  search?: string;
-  category?: string;
-  featured?: boolean;
-};
-
-export type DashboardStats = {
-  revenue: number;
-  orders: number;
-  products: number;
-  downloads: number;
-};
-
-export type ProductFormValues = {
+  source_url: string;
+  normalized_url: string;
+  source_domain: string;
   title: string;
-  description: string;
-  price: number;
-  categoryId: string;
-  status: ProductStatus;
-  isFeatured: boolean;
+  description: string | null;
+  tags: string[];
+  thumbnail_url: string | null;
+  status: SubmissionStatus;
+  moderation_reason: string | null;
+  submitter_ip_hash: string;
+  exchange_count: number;
+  created_at: string;
+  approved_at: string | null;
+};
+
+export type ExchangeRecord = {
+  id: string;
+  submitted_submission_id: string;
+  received_submission_id: string | null;
+  submitter_ip_hash: string;
+  created_at: string;
+};
+
+export type ReportRecord = {
+  id: string;
+  exchange_id: string | null;
+  submission_id: string | null;
+  reason: string;
+  details: string | null;
+  reporter_ip_hash: string;
+  created_at: string;
+};
+
+export type AllowedDomainRecord = {
+  id: string;
+  domain: string;
+  note: string | null;
+  is_active: boolean;
+  created_at: string;
+};
+
+export type BlockedKeywordRecord = {
+  id: string;
+  keyword: string;
+  note: string | null;
+  is_active: boolean;
+  created_at: string;
+};
+
+export type AdminLogRecord = {
+  id: string;
+  action: string;
+  payload: Record<string, unknown>;
+  created_at: string;
+};
+
+export type ExchangeWithSubmissions = ExchangeRecord & {
+  submitted?: SubmissionRecord | null;
+  received?: SubmissionRecord | null;
 };

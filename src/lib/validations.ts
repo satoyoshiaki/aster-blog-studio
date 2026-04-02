@@ -1,65 +1,66 @@
-import { ProductStatus, UserRole } from "@prisma/client";
 import { z } from "zod";
 
-export const loginSchema = z.object({
-  email: z.string().trim().email(),
-  password: z.string().min(8).max(72),
+import { normalizeDomain } from "@/lib/domain";
+
+export const submitSchema = z.object({
+  url: z.string().url("作品 URL を入力してください。"),
+  title: z.string().max(120, "タイトルは120文字以内で入力してください。").optional().or(z.literal("")),
+  note: z.string().max(500, "メモは500文字以内で入力してください。").optional().or(z.literal("")),
+  tags: z.string().max(120, "タグは120文字以内で入力してください。").optional().or(z.literal("")),
+  ageConfirmed: z.literal(true, {
+    errorMap: () => ({ message: "18歳以上のみ利用できます。" }),
+  }),
+  acceptPolicy: z.literal(true, {
+    errorMap: () => ({ message: "利用規約とポリシーへの同意が必要です。" }),
+  }),
+  honeypot: z.string().max(0).optional().default(""),
+  csrfToken: z.string().min(1, "CSRF token is missing."),
 });
 
-export const registerSchema = z.object({
-  email: z.string().trim().email(),
-  password: z.string().min(8).max(72),
-  name: z.string().trim().min(2).max(80).optional(),
-  wantsSeller: z.boolean().optional().default(false),
-  displayName: z.string().trim().min(2).max(80).optional(),
+export const reportSchema = z.object({
+  exchangeId: z.string().optional(),
+  submissionId: z.string().optional(),
+  reason: z.string().min(1, "理由を選択してください。").max(120),
+  details: z.string().max(500).optional().or(z.literal("")),
+  honeypot: z.string().max(0).optional().default(""),
+  csrfToken: z.string().min(1),
 });
 
-export const sellerProfileSchema = z.object({
-  displayName: z.string().trim().min(2).max(80),
-  bio: z.string().trim().max(500).optional().or(z.literal("")),
-  payoutEmail: z.string().trim().email().optional().or(z.literal("")),
+export const adminLoginSchema = z.object({
+  password: z.string().min(1, "管理パスワードを入力してください。"),
+  csrfToken: z.string().min(1),
 });
 
-export const productCreateSchema = z.object({
-  title: z.string().trim().min(3).max(120),
-  description: z.string().trim().min(20).max(5000),
-  price: z.coerce.number().int().min(100).max(1_000_000),
-  categoryId: z.string().cuid(),
-  status: z.nativeEnum(ProductStatus).default(ProductStatus.DRAFT),
-  isFeatured: z.coerce.boolean().optional().default(false),
+export const moderateSchema = z.object({
+  submissionId: z.string().min(1),
+  decision: z.enum(["approved", "rejected"]),
+  reason: z.string().max(240).optional().or(z.literal("")),
 });
 
-export const productUpdateSchema = productCreateSchema.partial();
-
-export const productQuerySchema = z.object({
-  category: z.string().trim().optional(),
-  search: z.string().trim().optional(),
-  featured: z
+export const domainSchema = z.object({
+  action: z.enum(["add", "remove"]),
+  domain: z
     .string()
-    .transform((value) => value === "true")
-    .optional(),
-  sellerProfileId: z.string().cuid().optional(),
+    .min(1)
+    .max(120)
+    .transform((value, ctx) => {
+      try {
+        return normalizeDomain(value);
+      } catch (error) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: error instanceof Error ? error.message : "有効なドメインを入力してください。",
+        });
+        return z.NEVER;
+      }
+    }),
 });
 
-export const cartMutationSchema = z.object({
-  action: z.enum(["add", "set", "remove", "clear"]).default("add"),
-  productId: z.string().cuid().optional(),
-  quantity: z.coerce.number().int().min(1).max(10).default(1),
+export const keywordSchema = z.object({
+  action: z.enum(["add", "remove"]),
+  keyword: z.string().min(1).max(120),
 });
 
-export const checkoutSchema = z.object({
-  cartId: z.string().cuid().optional(),
-});
-
-export const uploadImageSchema = z.object({
-  order: z.coerce.number().int().min(0).max(20).default(0),
-  altText: z.string().trim().max(120).optional(),
-});
-
-export const uploadFileSchema = z.object({
-  filename: z.string().trim().min(1).max(255).optional(),
-});
-
-export const roleSchema = z.object({
-  role: z.nativeEnum(UserRole),
-});
+export type SubmitInput = z.infer<typeof submitSchema>;
+export type ReportInput = z.infer<typeof reportSchema>;
+export type AdminLoginInput = z.infer<typeof adminLoginSchema>;

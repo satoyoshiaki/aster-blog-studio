@@ -1,44 +1,35 @@
-import { UserRole } from "@prisma/client";
-import { getToken } from "next-auth/jwt";
-import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function middleware(request: NextRequest) {
-  const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
-  const pathname = request.nextUrl.pathname;
+import { CSRF_COOKIE_NAME } from "@/lib/constants";
 
-  if (pathname === "/mypage") {
-    if (!token) {
-      return NextResponse.redirect(new URL("/auth/login", request.url));
-    }
-    return NextResponse.next();
+function createCsrfToken() {
+  const buffer = new Uint8Array(24);
+  crypto.getRandomValues(buffer);
+  return Array.from(buffer, (item) => item.toString(16).padStart(2, "0")).join("");
+}
+
+export function middleware(request: NextRequest) {
+  const response = NextResponse.next();
+  const csrfToken = request.cookies.get(CSRF_COOKIE_NAME)?.value;
+
+  if (!csrfToken) {
+    response.cookies.set(CSRF_COOKIE_NAME, createCsrfToken(), {
+      httpOnly: false,
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
+      path: "/",
+    });
   }
 
-  if (pathname.startsWith("/seller")) {
-    if (!token) {
-      return NextResponse.redirect(new URL("/auth/login", request.url));
-    }
+  response.headers.set("X-Frame-Options", "DENY");
+  response.headers.set("Referrer-Policy", "same-origin");
+  response.headers.set("X-Content-Type-Options", "nosniff");
+  response.headers.set("Content-Security-Policy", "frame-ancestors 'none';");
 
-    if (!(token.role === UserRole.SELLER || token.role === UserRole.ADMIN)) {
-      return NextResponse.redirect(new URL("/auth/login", request.url));
-    }
-
-    return NextResponse.next();
-  }
-
-  if (pathname.startsWith("/admin")) {
-    if (!token) {
-      return NextResponse.redirect(new URL("/", request.url));
-    }
-
-    if (token.role !== UserRole.ADMIN) {
-      return NextResponse.redirect(new URL("/", request.url));
-    }
-  }
-
-  return NextResponse.next();
+  return response;
 }
 
 export const config = {
-  matcher: ["/seller/:path*", "/admin/:path*"],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
 };
