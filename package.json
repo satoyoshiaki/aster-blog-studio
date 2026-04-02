@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "node --import tsx --test tests/night-bottle.test.ts",
+    "test": "node --import tsx --test tests/*.test.ts",
     "lint": "next lint",
     "format": "prettier --write .",
     "prisma:generate": "prisma generate",
