@@ -31,6 +31,11 @@ export const adminLoginSchema = z.object({
   csrfToken: z.string().min(1),
 });
 
+export const loginSchema = z.object({
+  email: z.string().email("有効なメールアドレスを入力してください。"),
+  password: z.string().min(8, "パスワードは8文字以上で入力してください。"),
+});
+
 export const moderateSchema = z.object({
   submissionId: z.string().min(1),
   decision: z.enum(["approved", "rejected"]),
@@ -64,3 +69,4 @@ export const keywordSchema = z.object({
 export type SubmitInput = z.infer<typeof submitSchema>;
 export type ReportInput = z.infer<typeof reportSchema>;
 export type AdminLoginInput = z.infer<typeof adminLoginSchema>;
+export type LoginInput = z.infer<typeof loginSchema>;

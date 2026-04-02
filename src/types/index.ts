@@ -1,3 +1,5 @@
+import type { Prisma } from "@prisma/client";
+
 export type SubmissionStatus = "pending" | "approved" | "rejected";
 
 export type SubmissionRecord = {
@@ -62,3 +64,18 @@ export type ExchangeWithSubmissions = ExchangeRecord & {
   submitted?: SubmissionRecord | null;
   received?: SubmissionRecord | null;
 };
+
+export type ProductFilters = {
+  category?: string;
+  search?: string;
+  featured?: boolean;
+};
+
+export type ProductWithRelations = Prisma.ProductGetPayload<{
+  include: {
+    category: true;
+    images: true;
+    files: true;
+    seller: true;
+  };
+}>;

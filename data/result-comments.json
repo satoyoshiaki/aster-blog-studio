@@ -1,0 +1,98 @@
+{
+  "INTJ": {
+    "ja": "全部読んでから動く参謀タイプ。感情に流されないのは強みだけど、たまには『説明なしでも不安なんだな』くらいは察してあげてほしい。",
+    "en": "You are the strategist who reads the whole map before moving. Impressive, but occasionally remember that some humans panic before the spreadsheet is ready.",
+    "ko": "움직이기 전에 지도를 끝까지 읽는 전략가형이다. 대단하긴 한데, 세상 사람 모두가 분석표 나오기 전부터 불안해진다는 사실도 가끔은 기억하자.",
+    "zh-CN": "你是那种看完整张地图才出手的策士型。很强，但也别忘了，有些人还没等你把分析表做完就已经开始慌了。"
+  },
+  "INTP": {
+    "ja": "脳内でずっとβ版を回している発明家タイプ。発想は鋭いけど、現実世界は『あとで詰める』だけでは締切を待ってくれない。",
+    "en": "You run a permanent beta build in your head. Brilliant, yes, but the physical world remains rude enough to demand finished versions.",
+    "ko": "머릿속에서 영구 베타 버전을 돌리는 발명가형이다. 아이디어는 날카롭지만 현실 세계는 '나중에 마무리'를 친절하게 기다려 주지 않는다.",
+    "zh-CN": "你脑子里像是永远开着测试版的发明家。点子很利，但现实世界并不会因为你说“之后再收尾”就自动体谅你。"
+  },
+  "ENTJ": {
+    "ja": "会議室に『じゃあやるか』を持ち込む司令塔。頼もしいけど、全員が常にその速度で生きているわけではない。",
+    "en": "You are the person who drags a room from discussion into action. Useful, though not everyone is living at your preferred operating speed.",
+    "ko": "회의실에 '그럼 하죠'를 들고 오는 지휘관형이다. 든든하지만 모두가 당신 속도로 사는 건 아니라는 점은 잊지 말자.",
+    "zh-CN": "你是那种把会议从讨论硬拉进执行的人。很好用，但也得承认，不是所有人都活在你的运行速度里。"
+  },
+  "ENTP": {
+    "ja": "脳内ツッコミと仮説生成が止まらない挑発型。面白いし強い。ただし全部を遊びにすると、片付け担当が泣く。",
+    "en": "You are powered by provocation, hypotheses, and one more angle. Fun and formidable, but if everything becomes an experiment, cleanup becomes somebody else's crisis.",
+    "ko": "도발과 가설 생성으로 굴러가는 자극형이다. 재밌고 강하다. 다만 모든 걸 실험으로 만들면 치우는 사람은 따로 울게 된다.",
+    "zh-CN": "你靠挑衅、假设和“再换个角度试试”驱动。确实有趣也很强，但如果万物皆实验，最后收拾残局的人通常不是你。"
+  },
+  "INFJ": {
+    "ja": "人の機微と未来の流れを同時に読もうとする予報士。深いけど、全員分まで背負うと静かに燃え尽きる。",
+    "en": "You read subtext and future trajectory at the same time. Deep gift, but carrying everyone's emotional weather report is a fast route to burnout.",
+    "ko": "사람의 미묘한 결을 읽으면서 미래 흐름까지 보려는 예보가형이다. 깊이는 장점이지만 모두의 감정 기상도까지 떠안으면 조용히 번아웃 난다.",
+    "zh-CN": "你像那种一边读人心暗流、一边看未来走势的预报员。很深，但如果连所有人的情绪天气都一起背上，安静地烧干只是时间问题。"
+  },
+  "INFP": {
+    "ja": "内側に強い価値観の火を持つ理想家。やさしさは本物。ただ、締切はあなたの世界観に感動して延びたりしない。",
+    "en": "You carry a stubborn private flame of values. It is real and rare, but deadlines remain famously unmoved by beautiful inner convictions.",
+    "ko": "안쪽에 단단한 가치의 불씨를 들고 사는 이상주의자형이다. 그 진심은 진짜다. 다만 마감은 당신의 세계관에 감동해서 늦춰지지 않는다.",
+    "zh-CN": "你内心有一团很固执也很真诚的价值之火。很珍贵，但截止时间不会因为你的内在信念很美就自动后延。"
+  },
+  "ENFJ": {
+    "ja": "人も場も前に進めるプロデューサー気質。頼られやすいし実際頼れる。ただ、自分の残量まで万能扱いしないこと。",
+    "en": "You are the producer who moves people and momentum together. Dependable, absolutely, but your battery is not a public utility.",
+    "ko": "사람과 분위기를 함께 앞으로 끌고 가는 프로듀서형이다. 믿음직스럽다. 하지만 당신의 배터리까지 공공재는 아니다.",
+    "zh-CN": "你是能把人和场子一起往前推的制作人型。确实可靠，但你的电量不是公共基础设施。"
+  },
+  "ENFP": {
+    "ja": "可能性に恋しやすいムードメーカー。魅力も巻き込み力も強い。ただし『これ絶対やる』が毎週更新されると周囲は少し揺れる。",
+    "en": "You flirt with possibility for sport and somehow make it contagious. Charming, yes, but constant relaunches can leave the people around you mildly seasick.",
+    "ko": "가능성과 금방 사랑에 빠지는 무드메이커형이다. 매력도 전염력도 강하다. 다만 '이건 진짜 한다'가 매주 바뀌면 주변은 조금 멀미 난다.",
+    "zh-CN": "你很容易对“可能性”一见钟情，而且还能把这股兴奋传染给别人。很有魅力，但如果“这次我真的要做”每周更新一次，周围人难免有点晕船。"
+  },
+  "ISTJ": {
+    "ja": "ちゃんと回る仕組みを静かに守る実務派。信頼は厚い。ただ、世の中はたまに『前例なし』で殴ってくる。",
+    "en": "You keep systems running without needing applause. Respect. Just remember the world occasionally attacks with situations that have no prior precedent.",
+    "ko": "제대로 굴러가는 구조를 조용히 지키는 실무형이다. 신뢰가 두껍다. 다만 세상은 가끔 '전례 없음'으로 들이받는다.",
+    "zh-CN": "你是那种不靠掌声也能把系统稳稳守住的实务派。很值得信赖，只是世界偶尔会拿“没有前例”这招直接砸过来。"
+  },
+  "ISFJ": {
+    "ja": "人の抜けを先回りで埋める保守の名手。やさしさが実務に変換されている。ただし、我慢まで標準機能にしなくていい。",
+    "en": "You quietly translate care into practical support. Excellent trait. Just because you can absorb the strain does not mean that should be your default setting.",
+    "ko": "사람들의 빈틈을 미리 메워 두는 돌봄형 실무가다. 배려가 실행력으로 변환된다. 다만 참는 것까지 기본 옵션으로 둘 필요는 없다.",
+    "zh-CN": "你很擅长把照顾别人这件事，悄悄变成具体可执行的支撑。很好，但能扛不代表就该默认一直扛。"
+  },
+  "ESTJ": {
+    "ja": "現場を前に進める管理力が強い運営タイプ。助かる人は多い。ただ、効率の刃を毎回フルで抜くと空気は切れる。",
+    "en": "You are built for execution, order, and getting things done. Very useful. Just note that maximum efficiency can accidentally slice through morale if used nonstop.",
+    "ko": "현장을 굴리고 정리하는 운영형이다. 도움 되는 사람이 많다. 다만 효율의 칼을 늘 최대로 뽑아 들면 분위기도 같이 잘린다.",
+    "zh-CN": "你天生就很会推进现场、整理秩序、把事做完。很有用。但如果效率这把刀每次都全开，气氛也会一起被切断。"
+  },
+  "ESFJ": {
+    "ja": "空気を整えながら場を成立させるホスト気質。安心感がある。ただし、全員を満足させる仕事はだいたい無限湧きする。",
+    "en": "You make groups feel held together and looked after. Valuable talent. Unfortunately, the job of keeping everyone happy is one of those infinite side quests.",
+    "ko": "분위기를 정리하고 사람들을 챙기며 자리를 성립시키는 호스트형이다. 안정감이 크다. 다만 모두를 만족시키는 일은 대체로 끝이 없다.",
+    "zh-CN": "你很会把人照顾到位、把场子稳住，让大家都觉得被接住。这很宝贵。可惜“让所有人都满意”这任务基本是无限支线。"
+  },
+  "ISTP": {
+    "ja": "静かに状況を読んで必要な一手だけ打つ職人タイプ。無駄がない。ただ、説明を省きすぎると周囲にはただの無言強者に見える。",
+    "en": "You read the room, fix the thing, and waste almost no motion. Efficient. But if you skip all explanation, people may experience you as a talented mystery object.",
+    "ko": "조용히 상황을 읽고 필요한 한 수만 두는 장인형이다. 군더더기가 없다. 다만 설명을 너무 줄이면 주변에는 재능 있는 미스터리 물체로 보일 수 있다.",
+    "zh-CN": "你会安静读局、出手只出必要的一招，动作几乎没有废笔。很利落。但如果你把解释省得太狠，别人可能只会觉得你是个高性能谜团。"
+  },
+  "ISFP": {
+    "ja": "言葉より感覚で『これは違う』を見抜く美意識派。やわらかく見えて芯が強い。ただ、嫌なものを全部無音で避けると誰も気づかない。",
+    "en": "You notice dissonance through instinct and aesthetics before most people do. Quiet strength. Just know that silently dodging every bad fit leaves others guessing.",
+    "ko": "말보다 감각으로 '이건 아니다'를 먼저 알아채는 미감형이다. 부드러워 보여도 심지는 강하다. 다만 싫은 것을 계속 무음 회피하면 아무도 모른다.",
+    "zh-CN": "你常常比别人更早靠直觉和审美感觉出“这里不对劲”。很有韧性，只是如果所有不喜欢都默默绕开，别人根本不会知道发生了什么。"
+  },
+  "ESTP": {
+    "ja": "状況対応の瞬発力が高いプレイヤー。場数に強いし回転も速い。ただし、勢いで勝てる日と仕組みが要る日は別だ。",
+    "en": "You are fast, adaptive, and alive in motion. Great in the moment. Just remember some battles are won by systems, not by another burst of charisma.",
+    "ko": "상황 대응 순발력이 높은 플레이어형이다. 실전에 강하고 회전도 빠르다. 다만 모든 날이 기세와 순발력으로 이기는 날은 아니다.",
+    "zh-CN": "你反应快、适应快，进入实战状态也快。很强。但也得承认，有些局靠的不是再来一波气势，而是靠系统。"
+  },
+  "ESFP": {
+    "ja": "楽しさと人の温度を即座に上げるエンタメ気質。華がある。ただ、今の楽しさが明日の面倒になることは普通にある。",
+    "en": "You raise the emotional temperature of a room almost instantly. Wonderful skill. Just note that today's fun occasionally invoices tomorrow's self.",
+    "ko": "사람과 분위기의 온도를 바로 끌어올리는 엔터테이너형이다. 존재감이 크다. 다만 오늘의 재미가 내일의 귀찮음 청구서로 돌아오는 일도 흔하다.",
+    "zh-CN": "你几乎能瞬间把一屋子的情绪温度拉高，很有感染力。只是今天的快乐，确实也常常会给明天的自己寄账单。"
+  }
+}

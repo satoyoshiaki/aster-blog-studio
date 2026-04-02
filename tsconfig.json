@@ -42,26 +42,8 @@
   },
   "include": [
     "next-env.d.ts",
-    "src/app/**/*.ts",
-    "src/app/**/*.tsx",
-    "src/components/night-bottle/**/*.ts",
-    "src/components/night-bottle/**/*.tsx",
-    "src/components/providers.tsx",
-    "src/components/ui/**/*.ts",
-    "src/components/ui/**/*.tsx",
-    "src/lib/admin-auth.ts",
-    "src/lib/constants.ts",
-    "src/lib/env.ts",
-    "src/lib/metadata.ts",
-    "src/lib/mock-data.ts",
-    "src/lib/repository.ts",
-    "src/lib/security.ts",
-    "src/lib/service.ts",
-    "src/lib/utils.ts",
-    "src/lib/validations.ts",
-    "src/types/**/*.ts",
-    "src/vendor/**/*.ts",
-    ".next/types/**/*.ts"
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ],
   "exclude": [
     "node_modules",

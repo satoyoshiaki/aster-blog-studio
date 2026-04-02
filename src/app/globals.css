@@ -3,21 +3,41 @@
 @tailwind utilities;
 
 :root {
-  --background: 240 10% 6%;
-  --foreground: 0 0% 98%;
-  --card: 240 10% 9%;
-  --card-foreground: 0 0% 98%;
-  --border: 240 6% 18%;
-  --input: 240 6% 18%;
-  --ring: 334 85% 63%;
-  --muted: 240 7% 12%;
-  --muted-foreground: 240 5% 65%;
-  --primary: 334 85% 63%;
+  --background: 222 47% 7%;
+  --foreground: 210 40% 98%;
+  --card: 222 43% 11%;
+  --card-foreground: 210 40% 98%;
+  --border: 220 25% 22%;
+  --input: 220 25% 22%;
+  --ring: 24 95% 53%;
+  --muted: 223 27% 15%;
+  --muted-foreground: 218 12% 72%;
+  --primary: 24 95% 53%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 240 8% 14%;
-  --secondary-foreground: 0 0% 98%;
-  --accent: 240 8% 14%;
-  --accent-foreground: 0 0% 98%;
+  --secondary: 199 89% 48%;
+  --secondary-foreground: 0 0% 100%;
+  --accent: 220 25% 16%;
+  --accent-foreground: 210 40% 98%;
+  --surface-muted: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] {
+  --background: 30 33% 97%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --border: 220 20% 84%;
+  --input: 220 20% 84%;
+  --ring: 24 95% 53%;
+  --muted: 220 25% 94%;
+  --muted-foreground: 220 10% 38%;
+  --primary: 24 95% 48%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 199 89% 44%;
+  --secondary-foreground: 0 0% 100%;
+  --accent: 210 35% 93%;
+  --accent-foreground: 222 47% 11%;
+  --surface-muted: rgba(15, 23, 42, 0.08);
 }
 
 html {
@@ -33,16 +53,25 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top, rgba(236, 72, 153, 0.16), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.12), transparent 24%),
-    linear-gradient(180deg, #0d0b12 0%, #09080d 48%, #050508 100%);
+    radial-gradient(circle at top, rgba(249, 115, 22, 0.16), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(14, 165, 233, 0.14), transparent 26%),
+    linear-gradient(180deg, rgba(10, 16, 30, 1) 0%, rgba(8, 13, 22, 1) 48%, rgba(3, 6, 11, 1) 100%);
   color: hsl(var(--foreground));
-  font-family: var(--font-sans, system-ui, sans-serif);
+  font-family:
+    "Avenir Next",
+    "Hiragino Sans",
+    "Noto Sans CJK JP",
+    "PingFang SC",
+    "Apple SD Gothic Neo",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
 }
 
 ::selection {
-  background: rgba(236, 72, 153, 0.24);
+  background: rgba(249, 115, 22, 0.26);
 }
 
 a {
@@ -64,10 +93,24 @@ img {
   h2,
   h3,
   h4 {
-    @apply font-display tracking-tight text-foreground;
+    @apply tracking-tight text-foreground;
+  }
+}
+
+@layer utilities {
+  .animate-card-in {
+    animation: card-in 320ms ease both;
+  }
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
   }
 
-  body[data-age-gate="locked"] [data-sensitive="true"] {
-    filter: blur(20px);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
