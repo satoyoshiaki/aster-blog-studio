@@ -1,0 +1,6 @@
+# Runtime is standard-library only.
+# These pinned dev/test packages match the environment used to verify this app.
+iniconfig==2.3.0
+packaging==26.0
+pluggy==1.6.0
+pytest==9.0.2
